@@ -78,17 +78,22 @@ formulario.addEventListener("submit", (evento) => {
 
   const consultas = carregar();
 
+  if (!nova.hora) {
+   mensagem.textContent = "O horário é obrigatório.";
+   return;
+}
+
   if (horarioOcupado(consultas, nova)) {
     mensagem.textContent = "erro";
     formulario.reset();
     return;
   }
 
-  consultas.push(nova);
-  salvar(consultas);
-  mensagem.textContent = "Consulta agendada.";
-  formulario.reset();
-  renderizar();
+    consultas.push(nova);
+    salvar(consultas);
+    mensagem.textContent = "Consulta agendada.";
+    formulario.reset();
+    renderizar();
 });
 
 renderizar();
